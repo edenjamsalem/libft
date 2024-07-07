@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_2d_arr.c                                      :+:      :+:    :+:   */
+/*   ft_strtrunc_front.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 16:23:04 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/06/24 16:23:57 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/07/07 15:41:43 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/07/07 15:44:23 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_2d_arr(void **arr, int len)
+char	*ft_strtrunc_front(char *str, unsigned int chr_count)
 {
-	int	i;
+	char			*trunc_str;
+	unsigned int	i;
+	unsigned int	j;
 
-	i = 0;
-	while (i < len)
-		free(arr[i++]);
-	free(arr);
+	if (chr_count > ft_strlen(str) || chr_count == 0 || !str)
+		return (NULL);
+	trunc_str = malloc(sizeof(char) * (ft_strlen(str) - chr_count + 1));
+	i = chr_count;
+	j = 0;
+	while (str[i])
+		trunc_str[j++] = str[i++];
+	trunc_str[j] = '\0';
+	free (str);
+	return (trunc_str);
 }

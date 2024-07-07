@@ -85,8 +85,9 @@ SRCS =	ft_atoi.c \
 		ft_issign.c \
 		free_2d_arr.c \
 		ft_2d_arrlen.c	\
-		../get_next_line/get_next_line_utils.c \
-		../get_next_line/get_next_line.c
+		get_next_line.c \
+		get_next_line_utils.c \
+		ft_strtrunc_front.c
 
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 

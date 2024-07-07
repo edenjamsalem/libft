@@ -177,4 +177,6 @@ int			ft_2d_arrlen(void **arr);
 
 char		*get_next_line(int fd);
 
+char		*ft_strtrunc_front(char *str, unsigned int chr_count);
+
 #endif
