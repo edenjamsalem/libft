@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_2d_arrlen.c                                     :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 16:23:14 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/06/24 16:24:18 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/07/08 12:21:18 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/07/08 12:21:20 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_2d_arrlen(void **arr)
+long	ft_atol(const char *str)
 {
-	int	size;
+	long		i;
+	long		sign;
+	long		nbr_int;
 
-	size = 0;
-	while (arr[size])
-		size++;
-	return (size);
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	sign = 1;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign *= (-1);
+		i++;
+	}
+	nbr_int = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nbr_int *= 10;
+		nbr_int += str[i] - '0';
+		i++;
+	}
+	return (nbr_int * sign);
 }

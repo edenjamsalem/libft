@@ -14,9 +14,9 @@
 
 int	ft_atoi(const char *str)
 {
-	long		i;
-	long		sign;
-	long		nbr_int;
+	int		i;
+	int		sign;
+	int		nbr_int;
 
 	i = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)

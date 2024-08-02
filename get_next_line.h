@@ -16,7 +16,7 @@
 # include "../libft/libft.h"
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 80 
+#  define BUFFER_SIZE 1024
 # endif
 
 int			check_node_for_nl(t_list *line_buff);

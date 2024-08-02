@@ -83,11 +83,13 @@ SRCS =	ft_atoi.c \
 		ft_swap.c \
 		bubble_sort.c \
 		ft_issign.c \
-		free_2d_arr.c \
-		ft_2d_arrlen.c	\
+		free_2darr.c \
+		ft_2darr_len.c	\
 		get_next_line.c \
 		get_next_line_utils.c \
-		ft_strtrunc_front.c
+		ft_strtrunc_front.c \
+		ft_atol.c \
+		ft_atoi_base.c
 
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 

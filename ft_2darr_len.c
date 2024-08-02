@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_2d_arr.c                                      :+:      :+:    :+:   */
+/*   ft_2darr_len.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/24 16:23:04 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/06/24 16:23:57 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/06/24 16:23:14 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/06/24 16:24:18 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_2d_arr(void **arr, int len)
+int	ft_2darr_len(void **arr)
 {
 	int	i;
 
 	i = 0;
-	while (i < len)
-		free(arr[i++]);
-	free(arr);
+	while (arr[i])
+		i++;
+	return (i);
 }
