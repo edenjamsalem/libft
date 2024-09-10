@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   free_dict.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/16 17:43:41 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/09/05 16:25:34 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/09/06 11:39:16 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/09/06 11:39:55 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+void	free_dict(t_dict *dict)
 {
-	int	size;
-
-	size = 0;
-	if (lst)
-	{
-		while (lst)
-		{
-			lst = lst->next;
-			size++;
-		}
-	}
-	return (size);
+	free(dict->key);
+	free(dict->value);
+	free(dict);
 }

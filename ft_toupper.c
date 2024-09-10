@@ -3,21 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 13:37:18 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/04/14 13:37:19 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:25:54 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+// Used a branchless programming technique which improves efficiency to
+// help me learn this style
+
 int	ft_toupper(int c)
 {
-	if (c >= 'a' && c <= 'z')
-		c -= 32;
-	return (c);
+	return (c -= 32 * (c >= 'a' && c <= 'z'));
 }
+
 /*
 #include <stdio.h>
 

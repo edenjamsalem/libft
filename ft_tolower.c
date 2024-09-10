@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 13:12:54 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/04/15 11:27:43 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:25:57 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+// Used a branchless programming technique which improves efficiency to
+// help me learn this style
+
 int	ft_tolower(int c)
 {
-	if (c >= 'A' && c <= 'Z')
-		c += 32;
-	return (c);
+	return (c += 32 * (c >= 'A' && c <= 'Z'));
 }
 /*
 #include <stdio.h>

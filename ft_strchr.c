@@ -13,6 +13,8 @@
 #include "libft.h"
 #include <stdio.h>
 
+// Returns a pointer to the first occurrence of a chr in a str.
+
 const char	*ft_strchr(const char *s, int c)
 {
 	int	i;

@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_del_lst_2node.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/16 17:43:41 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/09/05 16:25:34 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/09/06 12:03:55 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/09/06 15:27:16 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+void	ft_del_lst_2node(t_list_2 **node, void (*del)(void *))
 {
-	int	size;
+	t_list_2	*tmp;
 
-	size = 0;
-	if (lst)
-	{
-		while (lst)
-		{
-			lst = lst->next;
-			size++;
-		}
-	}
-	return (size);
+	if (!node || !(*node))
+		return ;
+	tmp = *node;
+	if (tmp->prev)
+		tmp->prev->next = tmp->next;
+	else
+		*node = tmp->next;
+	if (tmp->next)
+		tmp->next->prev = tmp->prev;
+	del(tmp->content);
+	free(tmp);
 }

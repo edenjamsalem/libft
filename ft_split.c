@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split.chr                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,73 +12,73 @@
 
 #include <stdlib.h>
 
-static int	skip_c(char const *s, char c, int i)
+static int	skip_c(char const *str, char chr, int i)
 {
-	while (s[i] && s[i] == c)
+	while (str[i] && str[i] == chr)
 		i++;
 	return (i);
 }
 
-static int	skip_word(char const *s, char c, int i)
+static int	skip_word(char const *str, char chr, int i)
 {
-	while (s[i] && s[i] != c)
+	while (str[i] && str[i] != chr)
 		i++;
 	return (i);
 }
 
-static char	*get_word(char const *s, char c, int i)
+static char	*get_word(char const *str, char chr, int i)
 {
 	int		j;
 	int		word_len;
 	char	*word;
 
-	word_len = (skip_word(s, c, i) - i);
+	word_len = (skip_word(str, chr, i) - i);
 	word = malloc(sizeof(char) * (word_len + 1));
 	if (!word)
 		return (NULL);
 	j = 0;
-	while (s[i] && s[i] != c)
-		word[j++] = s[i++];
+	while (str[i] && str[i] != chr)
+		word[j++] = str[i++];
 	word[j] = '\0';
 	return (word);
 }
 
-static int	count_words(char const *s, char c)
+static int	count_words(char const *str, char chr)
 {
 	int	count;
 	int	i;
 
 	i = 0;
 	count = 0;
-	i = skip_c(s, c, i);
-	while (s[i])
+	i = skip_c(str, chr, i);
+	while (str[i])
 	{
-		i = skip_word(s, c, i);
+		i = skip_word(str, chr, i);
 		count++;
-		i = skip_c(s, c, i);
+		i = skip_c(str, chr, i);
 	}
 	return (count);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *str, char chr)
 {
 	int		i;
 	int		j;
 	int		word_count;
 	char	**split_strs;
 
-	word_count = count_words(s, c);
+	word_count = count_words(str, chr);
 	split_strs = malloc(sizeof(char *) * (word_count + 1));
 	if (!split_strs)
 		return (NULL);
 	i = 0;
 	j = 0;
-	i = skip_c(s, c, i);
+	i = skip_c(str, chr, i);
 	while (j < word_count)
 	{
-		split_strs[j] = get_word(s, c, i);
-		i = skip_word(s, c, i);
-		i = skip_c(s, c, i);
+		split_strs[j] = get_word(str, chr, i);
+		i = skip_word(str, chr, i);
+		i = skip_c(str, chr, i);
 		j++;
 	}
 	split_strs[j] = 0;
@@ -95,7 +95,7 @@ int	main(void)
 	i = 0;
 	while (strs[i])
 	{
-		printf("%s\n", strs[i]);
+		printf("%str\n", strs[i]);
 		i++;
 	}
 }*/

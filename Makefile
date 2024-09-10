@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 11:52:54 by eamsalem          #+#    #+#              #
-#    Updated: 2024/06/12 16:17:56 by eamsalem         ###   ########.fr        #
+#    Updated: 2024/09/06 13:56:16 by eamsalem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,11 +85,15 @@ SRCS =	ft_atoi.c \
 		ft_issign.c \
 		free_2darr.c \
 		ft_2darr_len.c	\
-		get_next_line.c \
-		get_next_line_utils.c \
 		ft_strtrunc_front.c \
 		ft_atol.c \
-		ft_atoi_base.c
+		ft_atoi_base.c \
+		ft_lst_2add_back.c \
+		ft_lst_2last.c \
+		ft_del_lst_2node.c \
+		ft_lst_2new.c \
+		str_to_dict.c \
+		free_dict.c
 
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 

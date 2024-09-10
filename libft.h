@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:45:22 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/06/12 16:18:56 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/09/06 13:55:32 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,13 +108,13 @@ t_list		*ft_lstlast(t_list *lst);
 
 void		ft_lstadd_back(t_list **lst, t_list *new);
 
-void		ft_lstdelone(t_list *lst);
+void		ft_lstdelone(t_list *lst, void (*del)(void *));
 
-void		ft_lstclear(t_list **lst);
+void		ft_lstclear(t_list **lst, void (*del)(void *));
 
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 
-t_list		*ft_lstmap(t_list *lst, void *(*f)(void *));
+t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 int			chrsetcmp(char c, char *set);
 
@@ -140,11 +140,11 @@ int			*int_arrlcpy(int *dest, int *src, int size);
 
 int			*int_arrtrunc(int *src, int size);
 
-typedef struct t_int_lst
+typedef struct s_int_lst
 {
 	int					content;
-	struct t_int_lst	*next;
-	struct t_int_lst	*prev;
+	struct s_int_lst	*next;
+	struct s_int_lst	*prev;
 }	t_int_lst;
 
 t_int_lst	*int_lstnew(int content);
@@ -182,5 +182,30 @@ char		*ft_strtrunc_front(char *str, unsigned int chr_count);
 long		ft_atol(const char *str);
 
 int			ft_atoi_base(char *str, char *base);
+
+typedef struct s_list_2
+{
+	void			*content;
+	struct s_list_2	*next;
+	struct s_list_2	*prev;
+}	t_list_2;
+
+t_list_2	*ft_lst_2last(t_list_2 *lst);
+
+t_list_2	*ft_lst_2new(void *content);
+
+void		ft_lst_2add_back(t_list_2 **lst, t_list_2 *new);
+
+void		ft_del_lst_2node(t_list_2 **node, void (*del)(void *));
+
+typedef struct s_dict
+{
+	char	*key;
+	char	*value;
+}				t_dict;
+
+void		free_dict(t_dict *dict);
+
+t_dict		*str_to_dict(char const *str);
 
 #endif
