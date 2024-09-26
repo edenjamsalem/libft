@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:45:22 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/09/06 13:55:32 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/09/26 10:16:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <stdarg.h>
 
 int			ft_isalpha(char c);
 
@@ -30,7 +31,7 @@ int			ft_isalnum(char c);
 
 int			ft_isprint(int c);
 
-int			ft_issign(int c);
+int			ft_issign(char c);
 
 size_t		ft_strlcpy(char *dest, const char *src, size_t size);
 
@@ -84,13 +85,13 @@ char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 void		ft_striteri(char *s, void (*f)(unsigned int, char*));
 
-void		ft_putchar_fd(char c, int fd);
+int			ft_putchar_fd(int fd, char c);
 
-void		ft_putstr_fd(char *s, int fd);
+int			ft_putstr_fd(int fd, char *str);
 
 void		ft_putendl_fd(char *s, int fd);
 
-void		ft_putnbr_fd(int n, int fd);
+int			ft_putnbr_fd(int fd, int nbr);
 
 typedef struct s_list
 {
@@ -122,19 +123,33 @@ int			intsetcmp(int c, int *set, int size);
 
 int			ft_putaddr(void *ptr);
 
-int			ft_putchar_count(char c);
+int			ft_putaddr_fd(int fd, void *ptr);
+
+int			ft_putchar(char c);
+
+int			ft_putchar_fd(int fd, char c);
 
 int			ft_putnbr_base(unsigned int nbr, char *base);
 
-int			ft_putnbr_count(int n);
+int			ft_putnbr_base_fd(int fd, unsigned int nbr, char *base);
 
-int			ft_putstr_count(char *s);
+int			ft_putnbr(int nbr);
+
+int			ft_putnbr_fd(int fd, int nbr);
+
+int			ft_putstr(char *str);
 
 int			ft_putuslong_base(unsigned long nbr, char *base);
 
+int			ft_putuslong_base_fd(int fd, unsigned long nbr, char *base);
+
 int			ft_putusnbr(unsigned int n);
 
+int			ft_putusnbr_fd(int fd, unsigned int n);
+
 int			ft_printf(const char *format, ...);
+
+int			ft_fprintf(int fd, const char *format, ...);
 
 int			*int_arrlcpy(int *dest, int *src, int size);
 

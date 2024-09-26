@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+         #
+#    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/14 11:52:54 by eamsalem          #+#    #+#              #
-#    Updated: 2024/09/06 13:56:16 by eamsalem         ###   ########.fr        #
+#    Updated: 2024/09/26 10:14:22 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,81 +17,99 @@ CFLAGS = -Wall -Werror -Wextra
 
 OBJDIR =./build
 
-SRCS =	ft_atoi.c \
-		ft_bzero.c \
-		ft_calloc.c \
-		ft_isalnum.c \
-		ft_isalpha.c \
-		ft_isascii.c \
-		ft_isdigit.c \
-		ft_isprint.c \
+STRDIR = ./str_fns
+CHRDIR = ./chr_fns
+LSTDIR = ./lst_fns
+LST2DIR = ./lst_2fns
+INTLSTDIR = ./int_lst_fns
+MEMDIR = ./mem_fns
+PRINTDIR = ./print_fns
+
+SRCS =	$(STRDIR)/ft_split.c \
+		$(STRDIR)/ft_strchr.c \
+		$(STRDIR)/ft_strdup.c \
+		$(STRDIR)/ft_striteri.c \
+		$(STRDIR)/ft_strjoin.c \
+		$(STRDIR)/ft_strlcat.c \
+		$(STRDIR)/ft_strlcpy.c \
+		$(STRDIR)/ft_strlen.c \
+		$(STRDIR)/ft_strmapi.c \
+		$(STRDIR)/ft_strncmp.c \
+		$(STRDIR)/ft_strnstr.c \
+		$(STRDIR)/ft_strrchr.c \
+		$(STRDIR)/ft_strtrim.c \
+		$(STRDIR)/ft_substr.c \
+		$(STRDIR)/ft_strtrunc_front.c \
+\
+		$(CHRDIR)/ft_isalnum.c \
+		$(CHRDIR)/ft_isalpha.c \
+		$(CHRDIR)/ft_isascii.c \
+		$(CHRDIR)/ft_isdigit.c \
+		$(CHRDIR)/ft_isprint.c \
+		$(CHRDIR)/chrsetcmp.c \
+		$(CHRDIR)/ft_issign.c \
+		$(CHRDIR)/ft_tolower.c \
+		$(CHRDIR)/ft_toupper.c \
+\
+		$(LSTDIR)/ft_lstadd_back.c \
+		$(LSTDIR)/ft_lstadd_front.c \
+		$(LSTDIR)/ft_lstclear.c \
+		$(LSTDIR)/ft_lstdelone.c \
+		$(LSTDIR)/ft_lstiter.c \
+		$(LSTDIR)/ft_lstlast.c \
+		$(LSTDIR)/ft_lstmap.c \
+		$(LSTDIR)/ft_lstnew.c \
+		$(LSTDIR)/ft_lstsize.c \
+\
+		$(LST2DIR)/ft_lst_2add_back.c \
+		$(LST2DIR)/ft_lst_2last.c \
+		$(LST2DIR)/ft_del_lst_2node.c \
+		$(LST2DIR)/ft_lst_2new.c \
+\
+		$(INTLSTDIR)/int_lst_to_arr.c \
+		$(INTLSTDIR)/int_lstnew.c \
+		$(INTLSTDIR)/int_lstadd_back.c \
+		$(INTLSTDIR)/int_lstadd_front.c \
+		$(INTLSTDIR)/int_lstdel_front.c \
+		$(INTLSTDIR)/int_lstlast.c \
+		$(INTLSTDIR)/int_lstsize.c \
+		$(INTLSTDIR)/int_lstclear.c \
+\
+		$(MEMDIR)/ft_bzero.c \
+		$(MEMDIR)/ft_calloc.c \
+		$(MEMDIR)/ft_memchr.c \
+		$(MEMDIR)/ft_memcmp.c \
+		$(MEMDIR)/ft_memcpy.c \
+		$(MEMDIR)/ft_memmove.c \
+		$(MEMDIR)/ft_memset.c \
+\
+		$(PRINTDIR)/ft_putchar_fd.c \
+		$(PRINTDIR)/ft_putendl_fd.c \
+		$(PRINTDIR)/ft_putnbr_fd.c \
+		$(PRINTDIR)/ft_putstr_fd.c \
+		$(PRINTDIR)/ft_putaddr.c \
+		$(PRINTDIR)/ft_putchar.c \
+		$(PRINTDIR)/ft_putnbr_base.c \
+		$(PRINTDIR)/ft_putnbr_base_fd.c \
+		$(PRINTDIR)/ft_putnbr.c \
+		$(PRINTDIR)/ft_putstr.c \
+		$(PRINTDIR)/ft_putuslong_base.c \
+		$(PRINTDIR)/ft_putusnbr.c \
+		$(PRINTDIR)/ft_putusnbr_fd.c \
+		$(PRINTDIR)/ft_printf.c \
+		$(PRINTDIR)/ft_fprintf.c \
+\
+		ft_atoi.c \
 		ft_itoa.c \
-		ft_memchr.c \
-		ft_memcmp.c \
-		ft_memcpy.c \
-		ft_memmove.c \
-		ft_memset.c \
-		ft_putchar_fd.c \
-		ft_putendl_fd.c \
-		ft_putnbr_fd.c \
-		ft_putstr_fd.c \
-		ft_split.c \
-		ft_strchr.c \
-		ft_strdup.c \
-		ft_striteri.c \
-		ft_strjoin.c \
-		ft_strlcat.c \
-		ft_strlcpy.c \
-		ft_strlen.c \
-		ft_strmapi.c \
-		ft_strncmp.c \
-		ft_strnstr.c \
-		ft_strrchr.c \
-		ft_strtrim.c \
-		ft_substr.c \
-		ft_tolower.c \
-		ft_toupper.c \
-		ft_lstadd_back.c \
-		ft_lstadd_front.c \
-		ft_lstclear.c \
-		ft_lstdelone.c \
-		ft_lstiter.c \
-		ft_lstlast.c \
-		ft_lstmap.c \
-		ft_lstnew.c \
-		ft_lstsize.c \
-		chrsetcmp.c \
-		ft_putaddr.c \
-		ft_putchar_count.c \
-		ft_putnbr_base.c \
-		ft_putnbr_count.c \
-		ft_putstr_count.c \
-		ft_putuslong_base.c \
-		ft_putusnbr.c \
-		ft_printf.c \
 		intsetcmp.c \
 		int_arrlcpy.c \
 		int_arrtrunc.c \
-		int_lst_to_arr.c \
-		int_lstnew.c \
-		int_lstadd_back.c \
-		int_lstadd_front.c \
-		int_lstdel_front.c \
-		int_lstlast.c \
-		int_lstsize.c \
-		int_lstclear.c \
 		ft_swap.c \
 		bubble_sort.c \
-		ft_issign.c \
 		free_2darr.c \
 		ft_2darr_len.c	\
-		ft_strtrunc_front.c \
 		ft_atol.c \
 		ft_atoi_base.c \
-		ft_lst_2add_back.c \
-		ft_lst_2last.c \
-		ft_del_lst_2node.c \
-		ft_lst_2new.c \
 		str_to_dict.c \
 		free_dict.c
 
