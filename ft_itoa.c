@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:15:11 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/08/02 15:50:00 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/09/26 10:47:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static int	get_len(int nbr)
 	while (nbr != 0)
 	{
 		nbr /= 10;
+
 		len++;
 	}
 	return (len);

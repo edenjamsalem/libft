@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eamsalem <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:26:59 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/04/15 13:38:28 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/09/26 10:51:12 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_atoi(const char *str)
 	int		nbr_int;
 
 	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
 	sign = 1;
 	if (str[i] == '-' || str[i] == '+')
