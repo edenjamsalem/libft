@@ -6,11 +6,28 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:26:59 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/09/26 10:51:12 by user             ###   ########.fr       */
+/*   Updated: 2024/09/26 11:18:36 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static int	skip_whitespace(const char *str)
+{
+	int i;
+	
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	return (i);
+}
+
+static int	get_sign(char sign)
+{
+	if (sign == '-')
+		return (-1);
+	return (1);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -18,16 +35,10 @@ int	ft_atoi(const char *str)
 	int		sign;
 	int		nbr_int;
 
-	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
-		i++;
+	i = skip_whitespace(str);
 	sign = 1;
 	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign *= (-1);
-		i++;
-	}
+		sign = get_sign(str[i++]);
 	nbr_int = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
@@ -38,13 +49,13 @@ int	ft_atoi(const char *str)
 	return (nbr_int * sign);
 }
 /*
-#include <stdio.h>
 #include <limits.h>
 
 int	main(void)
 {
-	printf("%d\n", ft_atoi("1"));
-	printf("%d\n", ft_atoi("+42Lyon"));
-	printf("%d\n", ft_atoi("  2147483647"));
+	printf("%d\n", ft_atoi("-1"));
+	printf("%d\n", ft_atoi("	+42Lyon"));
+	printf("%d\n", ft_atoi("  -2147483647"));
 	printf("%d\n", ft_atoi(""));
-}*/
+}
+*/
