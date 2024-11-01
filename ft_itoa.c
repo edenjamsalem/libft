@@ -6,12 +6,13 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:15:11 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/09/26 11:15:26 by user             ###   ########.fr       */
+/*   Updated: 2024/11/01 07:27:40 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h" 
+#include "libft.h"
+#include "limits.h"
 
 static int	get_len(int nbr)
 {
@@ -20,6 +21,8 @@ static int	get_len(int nbr)
 	if (nbr == 0)
 		return (1);
 	len = 0;
+	if (nbr < 0)
+		len++;
 	while (nbr != 0)
 	{
 		nbr /= 10;
@@ -28,44 +31,19 @@ static int	get_len(int nbr)
 	return (len);
 }
 
-static int	get_pwr(int base_unit)
+void get_str(char *str, int nbr, int len)
 {
-	int	pwr;
-
-	pwr = 1;
-	while (base_unit > 1)
-	{
-		pwr *= 10;
-		base_unit--;
-	}
-	return (pwr);
-}
-
-static char	*get_str(int nbr, char *str, int len)
-{
-	int	i;
-	int	base_unit;
-	int	chr;
-
-	i = 0;
-	base_unit = len;
+	str[len] = '\0';
 	if (nbr < 0)
 	{
 		str[0] = '-';
-		base_unit--;
-		i++;
-	}
-	else
 		nbr = -nbr;
-	while (i < len)
-	{
-		chr = (nbr / get_pwr(base_unit));
-		str[i++] = -chr + '0';
-		nbr -= (chr * get_pwr(base_unit));
-		base_unit--;
 	}
-	str[i] = '\0';
-	return (str);
+	while (nbr != 0)
+	{
+		str[--len] = (nbr % 10) + '0';
+		nbr /= 10;
+	}
 }
 
 char	*ft_itoa(int nbr)
@@ -73,24 +51,25 @@ char	*ft_itoa(int nbr)
 	int		len;
 	char	*str;
 
+	if (nbr == 0)
+		return (ft_strdup("0"));
+	if (nbr == INT_MIN)
+		return (ft_strdup("-2147483648"));
 	len = get_len(nbr);
-	if (nbr < 0)
-		len++;
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);
-	str = get_str(nbr, str, len);
+	get_str(str, nbr, len);
 	return (str);
 }
-/*
+
 #include <stdio.h>
-#include <limits.h>
 
 int	main(void)
 {
-	printf("%str\nbr", ft_itoa(INT_MAX));
-	printf("%str\nbr", ft_itoa(12345));
-	printf("%str\nbr", ft_itoa(-12345));
-	printf("%str\nbr", ft_itoa(INT_MIN));
-	printf("%str\nbr", ft_itoa(0));
-}*/
+	printf("%s\n", ft_itoa(INT_MAX));
+	printf("%s\n", ft_itoa(12345));
+	printf("%s\n", ft_itoa(-12345));
+	printf("%s\n", ft_itoa(INT_MIN));
+	printf("%s\n", ft_itoa(0));
+}

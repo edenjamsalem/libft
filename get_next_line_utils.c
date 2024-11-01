@@ -3,92 +3,105 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 17:30:44 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/09/05 16:25:34 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/10/08 20:23:43 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-t_list	*ft_lstnew_buf(void)
+int	ft_strlen(const char *str)
 {
-	t_list	*list;
-	int		i;
+	int	i;
 
-	list = (t_list *)malloc(sizeof(t_list));
-	if (!list)
-		return (NULL);
-	list->content = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!list->content)
-	{
-		ft_lstclear(&list);
-		return (NULL);
-	}
 	i = 0;
-	while (i < BUFFER_SIZE + 1)
-		((char *)(list->content))[i++] = '\0';
-	list->next = NULL;
-	return (list);
+	while (str[i])
+		i++;
+	return (i);
 }
 
-int	get_line_len(t_list *line_buff)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		len;
+	char	*concat_str;
+	int		concat_len;
 	int		i;
-	char	*node_content;
+	int		j;
 
-	if (!line_buff || !line_buff->content)
-		return (0);
-	len = 0;
-	while (line_buff)
+	concat_len = ft_strlen(s1) + ft_strlen(s2);
+	concat_str = malloc(sizeof(char) * (concat_len + 1));
+	if (!concat_str)
+		return (NULL);
+	i = 0;
+	while (s1[i])
 	{
-		i = 0;
-		node_content = (char *)(line_buff->content);
-		while (node_content[i] && node_content[i] != '\n')
-		{
-			len++;
-			i++;
-		}
-		if (node_content[i] == '\n')
-			return (++len);
-		line_buff = line_buff->next;
+		concat_str[i] = s1[i];
+		i++;
 	}
-	return (len);
+	j = 0;
+	while (s2[j])
+		concat_str[i++] = s2[j++];
+	concat_str[i] = '\0';
+	return (concat_str);
 }
 
-int	check_node_for_nl(t_list *line_buff)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*node_content;
+	char	*joint_str;
+	int		s1_len;
+	int		s2_len;
+
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	joint_str = malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (!joint_str)
+		return (NULL);
+	ft_strlcpy(joint_str, s1, s1_len + 1);
+	ft_strlcpy(joint_str + s1_len, s2, s2_len + 1);
+	return (joint_str);
+}
+
+char	*ft_strdup(const char *str)
+{
+	char	*cpy;
 	int		i;
 
-	if (!line_buff || !line_buff->content)
-		return (0);
-	node_content = (char *)(line_buff->content);
-	if (!node_content)
-		return (0);
+	if (!str || !(*str))
+		return (NULL);
+	cpy = malloc((ft_strlen(str) + 1) * sizeof(char));
+	if (!cpy)
+		return (NULL);
 	i = 0;
-	while (node_content[i])
+	while (str[i])
 	{
-		if (node_content[i] == '\n')
+		cpy[i] = str[i];
+		i++;
+	}
+	cpy[i] = '\0';
+	return (cpy);
+}
+
+int		get_len(char *line_buf)
+{
+	int	i;
+
+	i = 0;
+	while (line_buf[i] && line_buf[i] != '\n')
+		i++;
+	return (i);
+}
+
+int	contains_newline(char *line_buf)
+{
+	int	i;
+
+	i = 0;
+	while (line_buf[i])
+	{
+		if (line_buf[i] == '\n')
 			return (1);
 		i++;
 	}
 	return (0);
-}
-
-void	ft_lstclear_butlast(t_list **lst)
-{
-	t_list	*tmp;
-
-	if (!lst || !*lst)
-		return ;
-	while ((*lst)->next)
-	{
-		tmp = (*lst)->next;
-		free((*lst)->content);
-		free(*lst);
-		*lst = tmp;
-	}
 }

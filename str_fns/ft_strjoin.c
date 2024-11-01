@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 15:10:56 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/09/26 09:31:03 by user             ###   ########.fr       */
+/*   Updated: 2024/10/28 17:58:18 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,24 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*concat_str;
-	int		concat_len;
-	int		i;
-	int		j;
+	char	*join_str;
+	int		s1_len;
+	int		s2_len;
 
-	concat_len = ft_strlen(s1) + ft_strlen(s2);
-	concat_str = malloc(sizeof(char) * (concat_len + 1));
-	if (!concat_str)
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	join_str = malloc(sizeof(char) * (s1_len + s2_len + 1));
+	if (!join_str)
 		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		concat_str[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j])
-		concat_str[i++] = s2[j++];
-	concat_str[i] = '\0';
-	return (concat_str);
+	ft_strlcpy(join_str, s1, s1_len + 1);
+	ft_strlcpy(join_str + s1_len, s2, s2_len + 1);
+	return (join_str);
 }
 /*
 #include <stdio.h>
 
 int	main(void)
 {
-	printf("%s\n", ft_strjoin("hello", "goodbye"));
-}*/
+	printf("%s\n", ft_strjoin("hello ", "goodbye"));
+}
+*/

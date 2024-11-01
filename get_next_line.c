@@ -3,193 +3,107 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
+/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 10:33:27 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/09/05 16:25:34 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/09/28 17:12:28 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static char	*read_line_from_buf(t_list *line_buff, char *line)
+char	*parse_line(char *line_buf)
 {
-	int		i;
-	char	*node_content;
-
-	if (!line_buff)
-		return (NULL);
-	while (line_buff)
-	{
-		node_content = (char *)(line_buff->content);
-		i = 0;
-		while (node_content[i])
-		{
-			*line = node_content[i];
-			if (node_content[i] == '\n')
-			{
-				*(++line) = '\0';
-				return (&node_content[++i]);
-			}
-			i++;
-			line++;
-		}
-		line_buff = line_buff->next;
-	}
-	*(line) = '\0';
-	return (NULL);
-}
-
-static int	read_file_til_nl(int fd, t_list **line_buff)
-{
-	int		bytes_read;
-	t_list	*new_node;
-
-	while (1)
-	{
-		new_node = ft_lstnew_buf();
-		if (!new_node)
-			return (0);
-		bytes_read = read(fd, new_node->content, BUFFER_SIZE);
-		if (bytes_read <= 0)
-		{
-			ft_lstclear(&new_node);
-			if (bytes_read == -1)
-				return (0);
-			return (1);
-		}
-		((char *)(new_node->content))[bytes_read] = '\0';
-		ft_lstadd_back(line_buff, new_node);
-		if (check_node_for_nl(new_node))
-			return (1);
-	}
-}
-
-static int	rem_prev_line_from_node(t_list **line_buff, char *next_chr)
-{
-	t_list	*new_node;
-	int		i;
-
-	new_node = ft_lstnew_buf();
-	if (!new_node)
-	{
-		ft_lstclear(line_buff);
-		return (0);
-	}
-	i = 0;
-	while (*next_chr)
-	{
-		((char *)(new_node->content))[i++] = *next_chr;
-		next_chr++;
-	}
-	((char *)((*line_buff)->content))[i] = '\0';
-	ft_lstclear(line_buff);
-	*line_buff = new_node;
-	return (1);
-}
-
-static char	*get_line(t_list **line_buff)
-{
+	int 	i;
 	char	*line;
-	char	*next_chr;
 
-	if (!line_buff || !*line_buff)
-		return (NULL);
-	line = malloc(sizeof(char) * (get_line_len(*line_buff) + 1));
+	if (!contains_newline(line_buf))
+		return (line_buf);
+	line = malloc(sizeof(char) * get_len(line_buf) + 2);
 	if (!line)
-	{
-		ft_lstclear(line_buff);
 		return (NULL);
-	}
-	next_chr = read_line_from_buf(*line_buff, line);
-	if (!next_chr || !*next_chr)
+	i = 0;
+	while (line_buf[i] && line_buf[i] != '\n')
 	{
-		ft_lstclear(line_buff);
-		*line_buff = NULL;
+		line[i] = line_buf[i];
+		i++;
 	}
-	else
-	{
-		ft_lstclear_butlast(line_buff);
-		if (!rem_prev_line_from_node(line_buff, next_chr))
-			return (NULL);
-	}
+	line[i++] = '\n';
+	line[i] = '\0';
 	return (line);
+}
+
+int	read_line(int fd, char **tmp)
+{
+	int bytes_read;
+	
+	*tmp = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (!(*tmp))
+		return (-1);
+	bytes_read = read(fd, *tmp, BUFFER_SIZE);
+	(*tmp)[bytes_read] = '\0';
+	return (bytes_read);
+}
+
+char	*trunc_line_buf(char *line_buf)
+{
+	char	*new_buf;
+
+	new_buf = ft_strdup(line_buf + get_len(line_buf) + 1);
+	free(line_buf);
+	return (new_buf);
 }
 
 char	*get_next_line(int fd)
 {
-	static t_list	*line_buff[100];
+	static char	*line_buf;
+	char		*tmp;
+	char		*line;
+	int			bytes_read;
 
 	if (fd < 0 || fd >= 100 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (line_buff[fd])
+	if (!line_buf)
 	{
-		if (!check_node_for_nl(line_buff[fd]))
+		line_buf = malloc(sizeof(char));
+		line_buf[0] = '\0';
+	}
+	bytes_read = 1;
+	while (bytes_read > 0)
+	{
+		if (!contains_newline(line_buf))
 		{
-			if (!read_file_til_nl(fd, &line_buff[fd]))
-			{
-				ft_lstclear(line_buff);
-				return (NULL);
-			}
+			bytes_read = read_line(fd, &tmp);	
+			line_buf = ft_strjoin(line_buf, tmp);
+			free(tmp);
+		}
+		else
+		{
+			line = parse_line(line_buf);
+			line_buf = trunc_line_buf(line_buf);
+			return (line);
 		}
 	}
-	else
-	{
-		if (!read_file_til_nl(fd, &line_buff[fd]))
-		{
-			ft_lstclear(line_buff);
-			return (NULL);
-		}
-	}
-	return (get_line(&line_buff[fd]));
+	return (line_buf);
 }
-
 /*
-int	main(void)
+int main(void)
 {
-	int	fd1;
-	int	fd2;
-	int	fd3;
-	int	fd4;
-	int	i;
-//	int	no_lines = 10;
+	int		fd;
 	char	*line;
-	
-	fd1 = open("./files/41_no_nl", O_RDONLY);
-	fd2 = open("./files/41_with_nl", O_RDONLY);
-	fd3 = open("./files/42_no_nl", O_RDONLY);
-	fd4 = open("./files/42_with_nl", O_RDONLY);
-	i = 0;
-	while (i < 1)
+
+	fd = open("test.txt", O_RDONLY);
+	while (1)
 	{
-		line = get_next_line(fd1);
+		line = get_next_line(fd);
+		if (!line || !(*line))
+		{
+			free(line);
+			break ;
+		}
 		printf("%s", line);
-		i++;
-		free(line);
+		free (line);
 	}
-	i = 0;
-	while (i < 2)
-	{
-		line = get_next_line(fd2);
-		printf("%s", line);
-		i++;
-		free(line);
-	}
-	i = 0;
-	while (i < 1)
-	{
-		line = get_next_line(fd3);
-		printf("%s", line);
-		i++;
-		free(line);
-	}
-	i = 0;
-	while (i < 2)
-	{
-		line = get_next_line(fd4);
-		printf("%s", line);
-		i++;
-		free(line);
-	}
-	
-}*/
+	free(line);
+}
+*/

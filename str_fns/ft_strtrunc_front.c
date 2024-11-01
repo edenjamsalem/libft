@@ -6,7 +6,7 @@
 /*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 15:41:43 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/09/26 09:30:19 by user             ###   ########.fr       */
+/*   Updated: 2024/09/26 17:36:11 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ char	*ft_strtrunc_front(char *str, unsigned int chr_count)
 	unsigned int	i;
 	unsigned int	j;
 
-	if (chr_count > ft_strlen(str) || chr_count == 0 || !str)
+	if (!str || chr_count > ft_strlen(str))
 		return (NULL);
+	if (chr_count == 0)
+		return (str);
 	trunc_str = malloc(sizeof(char) * (ft_strlen(str) - chr_count + 1));
 	i = chr_count;
 	j = 0;
