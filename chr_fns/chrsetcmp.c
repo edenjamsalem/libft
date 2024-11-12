@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chrsetcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 13:49:33 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/09/26 09:23:09 by user             ###   ########.fr       */
+/*   Updated: 2024/11/12 16:13:46 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,11 @@
 
 int	chrsetcmp(char c, char *set)
 {
-	int	i;
-
-	i = 0;
-	while (set[i])
+	while (*set)
 	{
-		if (set[i] == c)
+		if (c == *set)
 			return (1);
-		i++;
+		set++;
 	}
 	return (0);
 }

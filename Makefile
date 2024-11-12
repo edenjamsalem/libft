@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
+#    By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 10:40:04 by user              #+#    #+#              #
-#    Updated: 2024/09/26 10:40:10 by user             ###   ########.fr        #
+#    Updated: 2024/11/12 14:28:25 by eamsalem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ MEMDIR = ./mem_fns
 PRINTDIR = ./print_fns
 
 SRCS =	$(STRDIR)/ft_split.c \
+		$(STRDIR)/ft_split_set.c \
 		$(STRDIR)/ft_strchr.c \
 		$(STRDIR)/ft_strdup.c \
 		$(STRDIR)/ft_striteri.c \

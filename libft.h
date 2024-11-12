@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:45:22 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/09/26 10:42:34 by user             ###   ########.fr       */
+/*   Updated: 2024/11/12 14:27:59 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdarg.h>
+# include <stdint.h>
 
 int			ft_isalpha(char c);
 
@@ -222,5 +223,7 @@ typedef struct s_dict
 void		free_dict(t_dict *dict);
 
 t_dict		*str_to_dict(char const *str);
+
+char		**ft_split_set(char const *str, char *set);
 
 #endif
