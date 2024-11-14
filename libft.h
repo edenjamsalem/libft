@@ -6,7 +6,7 @@
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:45:22 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/11/12 14:27:59 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/11/14 16:11:02 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # include <stdarg.h>
 # include <stdint.h>
 
+#define MATCH(s1, s2) ft_strncmp(s1, s2, ft_strlen(s1) + 1) == 0
+
 int			ft_isalpha(char c);
 
 int			ft_isdigit(char c);
@@ -33,6 +35,8 @@ int			ft_isalnum(char c);
 int			ft_isprint(int c);
 
 int			ft_issign(char c);
+
+int			ft_isspace(char c);
 
 size_t		ft_strlcpy(char *dest, const char *src, size_t size);
 
@@ -214,16 +218,40 @@ void		ft_lst_2add_back(t_list_2 **lst, t_list_2 *new);
 
 void		ft_del_lst_2node(t_list_2 **node, void (*del)(void *));
 
+void		ft_lst_2delone(t_list_2 *lst, void (*del)(void *));
+
+void		ft_lst_2clear(t_list_2 **lst, void (*del)(void *));
+
 typedef struct s_dict
 {
-	char	*key;
-	char	*value;
+	char			*key;
+	char			*value;
+	struct s_dict	*next;
+	struct s_dict	*prev;
 }				t_dict;
 
 void		free_dict(t_dict *dict);
 
-t_dict		*str_to_dict(char const *str);
+t_dict		*str_to_dict(char *str);
 
 char		**ft_split_set(char const *str, char *set);
+
+char		*ft_strunion(char **str_arr);
+
+char		*get_dict_value(char *key, t_dict *dict);
+
+void		dict_addback(t_dict **dict, t_dict *new);
+
+t_dict		*dict_last(t_dict *dict);
+
+char		*ft_strcut(char *start, char *end);
+
+t_dict		*get_dict_entry(char *key, t_dict *dict);
+
+void		del_dict_node(t_dict **node);
+
+void		dict_clear(t_dict **dict);
+
+char		*ft_strchrset(char *str, char *set);
 
 #endif

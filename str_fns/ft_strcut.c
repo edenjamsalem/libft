@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strcut.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 18:54:35 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/11/14 14:57:53 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/11/14 11:59:08 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/11/14 12:02:17 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h" 
+#include "../libft.h"
 
-char	*ft_strdup(const char *str)
+// This function makes a copy of a str segment between two pointers
+
+char	*ft_strcut(char *start, char *end)
 {
-	char	*cpy;
-	int		size;
+	char 	*segment;
+	char 	*tmp;
 
-	if (!str || !(*str))
+	if (!start || !end)
 		return (NULL);
-	size = ft_strlen(str);
-	cpy = malloc(sizeof(char) * (size + 1));
-	if (!cpy)
+	segment = malloc(sizeof(char) * (end - start + 1));
+	if (!segment)
 		return (NULL);
-	ft_strlcpy(cpy, str, size + 1);
-	return (cpy);
+	tmp = segment;
+	while (start < end)
+		*tmp++ = *start++;
+	*tmp = '\0';
+	return (segment);
 }
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	printf("%s\n", ft_strdup("hello"));
-}*/

@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   del_dict_node.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 18:54:35 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/11/14 14:57:53 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/11/14 12:35:39 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/11/14 12:37:11 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h" 
+#include "../libft.h"
 
-char	*ft_strdup(const char *str)
+void	del_dict_node(t_dict **node)
 {
-	char	*cpy;
-	int		size;
+	t_dict	*tmp;
 
-	if (!str || !(*str))
-		return (NULL);
-	size = ft_strlen(str);
-	cpy = malloc(sizeof(char) * (size + 1));
-	if (!cpy)
-		return (NULL);
-	ft_strlcpy(cpy, str, size + 1);
-	return (cpy);
+	if (!node || !(*node))
+		return ;
+	tmp = *node;
+	if (tmp->prev)
+		tmp->prev->next = tmp->next;
+	else
+		*node = tmp->next;
+	if (tmp->next)
+		tmp->next->prev = tmp->prev;
+	free_dict(tmp);
 }
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	printf("%s\n", ft_strdup("hello"));
-}*/

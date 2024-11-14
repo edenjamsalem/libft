@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strchrset.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 18:54:35 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/11/14 14:57:53 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/11/14 15:59:45 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/11/14 16:03:17 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h" 
+#include "../libft.h"
 
-char	*ft_strdup(const char *str)
+// Returns a pointer to the first occurrence of a any chr from "set" in "str".
+
+char	*ft_strchrset(char *str, char *set)
 {
-	char	*cpy;
-	int		size;
+	int	i;
 
-	if (!str || !(*str))
+	if (!str)
 		return (NULL);
-	size = ft_strlen(str);
-	cpy = malloc(sizeof(char) * (size + 1));
-	if (!cpy)
-		return (NULL);
-	ft_strlcpy(cpy, str, size + 1);
-	return (cpy);
+	i = 0;
+	while (str[i])
+	{
+		if (chrsetcmp(str[i], set))
+			return (&str[i]);
+		i++;
+	}
+	return (NULL);
 }
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	printf("%s\n", ft_strdup("hello"));
-}*/

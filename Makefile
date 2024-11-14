@@ -6,7 +6,7 @@
 #    By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 10:40:04 by user              #+#    #+#              #
-#    Updated: 2024/11/12 14:28:25 by eamsalem         ###   ########.fr        #
+#    Updated: 2024/11/14 16:03:12 by eamsalem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,12 @@ LST2DIR = ./lst_2fns
 INTLSTDIR = ./int_lst_fns
 MEMDIR = ./mem_fns
 PRINTDIR = ./print_fns
+DICTDIR = ./dict_fns
 
 SRCS =	$(STRDIR)/ft_split.c \
 		$(STRDIR)/ft_split_set.c \
 		$(STRDIR)/ft_strchr.c \
+		$(STRDIR)/ft_strchrset.c \
 		$(STRDIR)/ft_strdup.c \
 		$(STRDIR)/ft_striteri.c \
 		$(STRDIR)/ft_strjoin.c \
@@ -41,11 +43,14 @@ SRCS =	$(STRDIR)/ft_split.c \
 		$(STRDIR)/ft_strtrim.c \
 		$(STRDIR)/ft_substr.c \
 		$(STRDIR)/ft_strtrunc_front.c \
+		$(STRDIR)/ft_strunion.c \
+		$(STRDIR)/ft_strcut.c \
 \
 		$(CHRDIR)/ft_isalnum.c \
 		$(CHRDIR)/ft_isalpha.c \
 		$(CHRDIR)/ft_isascii.c \
 		$(CHRDIR)/ft_isdigit.c \
+		$(CHRDIR)/ft_isspace.c \
 		$(CHRDIR)/ft_isprint.c \
 		$(CHRDIR)/chrsetcmp.c \
 		$(CHRDIR)/ft_issign.c \
@@ -66,6 +71,8 @@ SRCS =	$(STRDIR)/ft_split.c \
 		$(LST2DIR)/ft_lst_2last.c \
 		$(LST2DIR)/ft_del_lst_2node.c \
 		$(LST2DIR)/ft_lst_2new.c \
+		$(LST2DIR)/ft_lst_2delone.c \
+		$(LST2DIR)/ft_lst_2clear.c \
 \
 		$(INTLSTDIR)/int_lst_to_arr.c \
 		$(INTLSTDIR)/int_lstnew.c \
@@ -100,6 +107,15 @@ SRCS =	$(STRDIR)/ft_split.c \
 		$(PRINTDIR)/ft_printf.c \
 		$(PRINTDIR)/ft_fprintf.c \
 \
+		$(DICTDIR)/str_to_dict.c \
+		$(DICTDIR)/free_dict.c \
+		$(DICTDIR)/get_dict_value.c \
+		$(DICTDIR)/get_dict_entry.c \
+		$(DICTDIR)/dict_addback.c \
+		$(DICTDIR)/dict_last.c \
+		$(DICTDIR)/dict_clear.c \
+		$(DICTDIR)/del_dict_node.c \
+\
 		ft_atoi.c \
 		ft_itoa.c \
 		intsetcmp.c \
@@ -110,9 +126,7 @@ SRCS =	$(STRDIR)/ft_split.c \
 		free_2darr.c \
 		ft_2darr_len.c	\
 		ft_atol.c \
-		ft_atoi_base.c \
-		str_to_dict.c \
-		free_dict.c
+		ft_atoi_base.c
 
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 

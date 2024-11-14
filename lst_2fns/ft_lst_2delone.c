@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_dict.c                                        :+:      :+:    :+:   */
+/*   ft_lst_2delone.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/06 11:39:16 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/09/06 11:39:55 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/11/13 15:34:39 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/11/13 15:34:49 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-void	free_dict(t_dict *dict)
+void	ft_lst_2delone(t_list_2 *lst, void (*del)(void *))
 {
-	free(dict->key);
-	free(dict->value);
-	free(dict);
+	if (lst)
+	{
+		del(lst->content);
+		free(lst);
+	}
 }

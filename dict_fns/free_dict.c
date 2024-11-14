@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   free_dict.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 18:54:35 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/11/14 14:57:53 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/09/06 11:39:16 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/11/14 11:19:25 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h" 
+#include "../libft.h"
 
-char	*ft_strdup(const char *str)
+// This function free a single dict node
+
+void	free_dict(t_dict *dict)
 {
-	char	*cpy;
-	int		size;
-
-	if (!str || !(*str))
-		return (NULL);
-	size = ft_strlen(str);
-	cpy = malloc(sizeof(char) * (size + 1));
-	if (!cpy)
-		return (NULL);
-	ft_strlcpy(cpy, str, size + 1);
-	return (cpy);
+	free(dict->key);
+	free(dict->value);
+	free(dict);
 }
-/*
-#include <stdio.h>
-
-int	main(void)
-{
-	printf("%s\n", ft_strdup("hello"));
-}*/

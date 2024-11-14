@@ -6,14 +6,14 @@
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 13:07:31 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/09/06 14:50:11 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/11/14 13:26:28 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
-// THIS FUNCTION PARSES A STR OF FORM "KEY=VALUE" AND STORES IN A DICT
-
+// THIS FUNCTION PARSES A STR OF FORM "KEY=VALUE" AND STORES IN A NEW DICT NODE
+/*
 static char	*get_key(char const *str, const char *equal_sign)
 {
 	int		key_len;
@@ -28,21 +28,15 @@ static char	*get_key(char const *str, const char *equal_sign)
 	ft_strlcpy(key, str, key_len + 1);
 	return (key);
 }
-
-t_dict	*str_to_dict(char const *str)
+*/
+static void	assign_keyvalue(char *str, t_dict *dict)
 {
-	t_dict		*dict;
-	const char	*equal_sign;
-
-	if (!str || !(*str))
-		return (NULL);
-	dict = malloc(sizeof(t_dict));
-	if (!dict)
-		return (NULL);
-	equal_sign = ft_strchr(str, '=');
+	char	*equal_sign;
+	
+	equal_sign = (char *)ft_strchr(str, '=');
 	if (equal_sign)
 	{
-		dict->key = get_key(str, equal_sign);
+		dict->key = ft_strcut(str, equal_sign);
 		dict->value = ft_strdup(equal_sign + 1);
 	}
 	else
@@ -50,5 +44,19 @@ t_dict	*str_to_dict(char const *str)
 		dict->key = ft_strdup(str);
 		dict->value = NULL;
 	}
+}
+
+t_dict	*str_to_dict(char *str)
+{
+	t_dict		*dict;
+
+	if (!str || !(*str))
+		return (NULL);
+	dict = malloc(sizeof(t_dict));
+	if (!dict)
+		return (NULL);
+	assign_keyvalue(str, dict);
+	dict->next = NULL;
+	dict->prev = NULL;
 	return (dict);
 }
