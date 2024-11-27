@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 09:38:05 by user              #+#    #+#             */
-/*   Updated: 2024/09/26 10:28:36 by user             ###   ########.fr       */
+/*   Updated: 2024/11/22 10:35:03 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,13 @@ int	ft_fprintf(int fd, const char *format, ...)
 	count = 0;
 	while (format[i])
 	{
-		if (chrsetcmp(format[i], "%"))
+		if (format[i] == '%' && chrsetcmp(format[i + 1], specifiers_set))
 		{
-			if (chrsetcmp(format[i + 1], specifiers_set))
-				count += print_arg(fd, format[i++ + 1], args);
+			count += print_arg(fd, format[i + 1], args);
+			i += 2;
 		}
 		else
-		{
-			write(fd, &format[i], 1);
-			count++;
-		}
-		i++;
+			count += ft_putchar_fd(fd, format[i++]);
 	}
 	va_end(args);
 	return (count);

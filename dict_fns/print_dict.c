@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchrset.c                                     :+:      :+:    :+:   */
+/*   print_dict.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 15:59:45 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/11/27 18:33:58 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/11/20 14:39:55 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/11/20 14:42:44 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-// Returns a pointer to the first occurrence of a any chr from "set" in "str".
-char	*ft_strchrset(char *str, char *set)
+void	print_dict(t_dict *dict)
 {
-	int	i;
-
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (str[i])
+	while (dict)
 	{
-		if (chrsetcmp(str[i], set))
-			return (&str[i]);
-		i++;
+		ft_printf("%s=%s\n", dict->key, dict->value);
+		dict = dict->next;
 	}
-	return (NULL);
 }

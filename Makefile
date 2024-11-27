@@ -6,7 +6,7 @@
 #    By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 10:40:04 by user              #+#    #+#              #
-#    Updated: 2024/11/14 16:03:12 by eamsalem         ###   ########.fr        #
+#    Updated: 2024/11/27 17:59:55 by eamsalem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ OBJDIR =./build
 STRDIR = ./str_fns
 CHRDIR = ./chr_fns
 LSTDIR = ./lst_fns
+ARRLSTDIR = ./arrlst_fns
 LST2DIR = ./lst_2fns
 INTLSTDIR = ./int_lst_fns
 MEMDIR = ./mem_fns
@@ -83,6 +84,8 @@ SRCS =	$(STRDIR)/ft_split.c \
 		$(INTLSTDIR)/int_lstsize.c \
 		$(INTLSTDIR)/int_lstclear.c \
 \
+		$(ARRLSTDIR)/arrlst_fns.c \
+\
 		$(MEMDIR)/ft_bzero.c \
 		$(MEMDIR)/ft_calloc.c \
 		$(MEMDIR)/ft_memchr.c \
@@ -115,6 +118,7 @@ SRCS =	$(STRDIR)/ft_split.c \
 		$(DICTDIR)/dict_last.c \
 		$(DICTDIR)/dict_clear.c \
 		$(DICTDIR)/del_dict_node.c \
+		$(DICTDIR)/print_dict.c \
 \
 		ft_atoi.c \
 		ft_itoa.c \

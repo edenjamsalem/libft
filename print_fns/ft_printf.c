@@ -3,13 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 10:13:46 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/09/26 10:02:13 by user             ###   ########.fr       */
+/*   Updated: 2024/11/27 18:13:48 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdarg.h>
+#include <unistd.h>
+#include <stdlib.h>
 #include "../libft.h" 
 
 static int	print_arg(char format_specifier, va_list args)
@@ -47,17 +50,13 @@ int	ft_printf(const char *format, ...)
 	count = 0;
 	while (format[i])
 	{
-		if (chrsetcmp(format[i], "%"))
+		if (format[i] == '%' && chrsetcmp(format[i + 1], specifiers_set))
 		{
-			if (chrsetcmp(format[i + 1], specifiers_set))
-				count += print_arg(format[i++ + 1], args);
+			count += print_arg(format[i + 1], args);
+			i += 2;
 		}
 		else
-		{
-			write(1, &format[i], 1);
-			count++;
-		}
-		i++;
+			count += ft_putchar(format[i++]);
 	}
 	va_end(args);
 	return (count);
@@ -80,4 +79,5 @@ int	main(void)
 	printf("length = %d\n", ft_printf("%%\n"));
 	printf("%d\n", ft_printf(" %s %s %s %s %s \n", " - ", "", "4", "", "2 "));
 	printf("%d\n", printf(" %s %s %s %s %s \n", " - ", "", "4", "", "2 "));
-}*/
+}
+*/

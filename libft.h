@@ -6,7 +6,7 @@
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:45:22 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/11/14 16:11:02 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/11/27 18:45:40 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,5 +253,20 @@ void		del_dict_node(t_dict **node);
 void		dict_clear(t_dict **dict);
 
 char		*ft_strchrset(char *str, char *set);
+
+void		print_dict(t_dict *dict);
+
+typedef struct s_arrlist
+{
+	void	**content;
+	int		count;
+	int		capacity;
+}	t_arrlst;
+
+void	init_arrlst(t_arrlst *list, int	capacity);
+
+void	append_arrlst(t_arrlst *list, void *data);
+
+void	free_arrlst(t_arrlst *list, void (*del)(void *));
 
 #endif
