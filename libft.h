@@ -6,7 +6,7 @@
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:45:22 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/11/27 18:45:40 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/12/02 14:40:11 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # include <stdint.h>
 
 #define MATCH(s1, s2) ft_strncmp(s1, s2, ft_strlen(s1) + 1) == 0
+#define FREE_2DARR(arr) free_2darr((void **)arr, ft_2darr_len((void **)arr))
+#define CHILD_PROCESS pid == 0
 
 int			ft_isalpha(char c);
 
@@ -263,7 +265,7 @@ typedef struct s_arrlist
 	int		capacity;
 }	t_arrlst;
 
-void	init_arrlst(t_arrlst *list, int	capacity);
+t_arrlst	*init_arrlst(int capacity);
 
 void	append_arrlst(t_arrlst *list, void *data);
 
