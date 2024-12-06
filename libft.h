@@ -6,7 +6,7 @@
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:45:22 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/12/02 14:40:11 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/12/05 16:59:27 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <stdarg.h>
 # include <stdint.h>
 
-#define MATCH(s1, s2) ft_strncmp(s1, s2, ft_strlen(s1) + 1) == 0
+
 #define FREE_2DARR(arr) free_2darr((void **)arr, ft_2darr_len((void **)arr))
 #define CHILD_PROCESS pid == 0
 
@@ -99,6 +99,8 @@ int			ft_putstr_fd(int fd, char *str);
 void		ft_putendl_fd(char *s, int fd);
 
 int			ft_putnbr_fd(int fd, int nbr);
+
+int	ft_putaddr_fd(int fd, void *ptr);
 
 typedef struct s_list
 {
@@ -254,6 +256,10 @@ void		del_dict_node(t_dict **node);
 
 void		dict_clear(t_dict **dict);
 
+int			dict_size(t_dict *dict);
+
+char 		**dict_to_arr(t_dict *dict);
+
 char		*ft_strchrset(char *str, char *set);
 
 void		print_dict(t_dict *dict);
@@ -270,5 +276,7 @@ t_arrlst	*init_arrlst(int capacity);
 void	append_arrlst(t_arrlst *list, void *data);
 
 void	free_arrlst(t_arrlst *list, void (*del)(void *));
+
+int		ft_match(char *s1, char *s2);
 
 #endif

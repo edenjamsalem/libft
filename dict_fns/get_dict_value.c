@@ -6,7 +6,7 @@
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 18:47:45 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/11/14 15:46:47 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/12/04 18:45:28 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*get_dict_value(char *key, t_dict *dict)
 {
 	while (dict)
 	{
-		if (MATCH(key, dict->key))
+		if (ft_match(key, dict->key))
 			return (dict->value);
 		dict = dict->next;
 	}

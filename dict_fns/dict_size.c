@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_dict_entry.c                                   :+:      :+:    :+:   */
+/*   dict_size.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/14 12:26:54 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/12/04 18:45:41 by eamsalem         ###   ########.fr       */
+/*   Created: 2024/12/05 16:48:58 by eamsalem          #+#    #+#             */
+/*   Updated: 2024/12/05 16:49:52 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-t_dict	*get_dict_entry(char *key, t_dict *dict)
+int	dict_size(t_dict *dict)
 {
+	int	size;
+
+	size = 0;
 	while (dict)
 	{
-		if (ft_match(key, dict->key))
-			return (dict);
+		size++;
 		dict = dict->next;
 	}
-	return (NULL);
+	return (size);
 }

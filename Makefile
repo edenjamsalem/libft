@@ -6,7 +6,7 @@
 #    By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 10:40:04 by user              #+#    #+#              #
-#    Updated: 2024/11/27 17:59:55 by eamsalem         ###   ########.fr        #
+#    Updated: 2024/12/05 17:00:47 by eamsalem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCS =	$(STRDIR)/ft_split.c \
 		$(STRDIR)/ft_strtrunc_front.c \
 		$(STRDIR)/ft_strunion.c \
 		$(STRDIR)/ft_strcut.c \
+		$(STRDIR)/ft_match.c \
 \
 		$(CHRDIR)/ft_isalnum.c \
 		$(CHRDIR)/ft_isalpha.c \
@@ -99,12 +100,14 @@ SRCS =	$(STRDIR)/ft_split.c \
 		$(PRINTDIR)/ft_putnbr_fd.c \
 		$(PRINTDIR)/ft_putstr_fd.c \
 		$(PRINTDIR)/ft_putaddr.c \
+		$(PRINTDIR)/ft_putaddr_fd.c \
 		$(PRINTDIR)/ft_putchar.c \
 		$(PRINTDIR)/ft_putnbr_base.c \
 		$(PRINTDIR)/ft_putnbr_base_fd.c \
 		$(PRINTDIR)/ft_putnbr.c \
 		$(PRINTDIR)/ft_putstr.c \
 		$(PRINTDIR)/ft_putuslong_base.c \
+		$(PRINTDIR)/ft_putuslong_base_fd.c \
 		$(PRINTDIR)/ft_putusnbr.c \
 		$(PRINTDIR)/ft_putusnbr_fd.c \
 		$(PRINTDIR)/ft_printf.c \
@@ -117,6 +120,8 @@ SRCS =	$(STRDIR)/ft_split.c \
 		$(DICTDIR)/dict_addback.c \
 		$(DICTDIR)/dict_last.c \
 		$(DICTDIR)/dict_clear.c \
+		$(DICTDIR)/dict_size.c \
+		$(DICTDIR)/dict_to_arr.c \
 		$(DICTDIR)/del_dict_node.c \
 		$(DICTDIR)/print_dict.c \
 \

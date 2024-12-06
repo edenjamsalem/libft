@@ -6,13 +6,13 @@
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 11:59:08 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/11/15 12:00:03 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:03:54 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-// This function makes a copy of a str segment between two pointers
+// This function copies a str segment between two pointers, excl *end
 char	*ft_strcut(char *start, char *end)
 {
 	char 	*segment;
@@ -29,3 +29,11 @@ char	*ft_strcut(char *start, char *end)
 	*tmp = '\0';
 	return (segment);
 }
+/*
+int main(void)
+{
+	char *str = "hello my name is eden";
+
+	printf("%s\n", ft_strcut(str, str + 1));
+}
+*/
