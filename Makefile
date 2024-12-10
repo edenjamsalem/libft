@@ -6,7 +6,7 @@
 #    By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 10:40:04 by user              #+#    #+#              #
-#    Updated: 2024/12/05 17:00:47 by eamsalem         ###   ########.fr        #
+#    Updated: 2024/12/10 16:22:43 by eamsalem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,6 +116,7 @@ SRCS =	$(STRDIR)/ft_split.c \
 		$(DICTDIR)/str_to_dict.c \
 		$(DICTDIR)/free_dict.c \
 		$(DICTDIR)/get_dict_value.c \
+		$(DICTDIR)/set_dict_value.c \
 		$(DICTDIR)/get_dict_entry.c \
 		$(DICTDIR)/dict_addback.c \
 		$(DICTDIR)/dict_last.c \

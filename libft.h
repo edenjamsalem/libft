@@ -6,7 +6,7 @@
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:45:22 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/12/05 16:59:27 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:22:31 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,6 +260,8 @@ int			dict_size(t_dict *dict);
 
 char 		**dict_to_arr(t_dict *dict);
 
+void		set_dict_value(char *key, char *new_value, t_dict *dict);
+	
 char		*ft_strchrset(char *str, char *set);
 
 void		print_dict(t_dict *dict);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user <user@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 18:15:11 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/11/01 07:27:40 by user             ###   ########.fr       */
+/*   Updated: 2024/12/10 16:29:38 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*ft_itoa(int nbr)
 	get_str(str, nbr, len);
 	return (str);
 }
-
+/*
 #include <stdio.h>
 
 int	main(void)
@@ -73,3 +73,4 @@ int	main(void)
 	printf("%s\n", ft_itoa(INT_MIN));
 	printf("%s\n", ft_itoa(0));
 }
+*/

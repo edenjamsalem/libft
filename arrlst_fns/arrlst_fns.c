@@ -6,7 +6,7 @@
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 17:09:25 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/12/06 14:12:59 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/12/09 13:51:26 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_arrlst	*init_arrlst(int capacity)
 		return (NULL);
 	arrlst->capacity = capacity;
 	arrlst->count = 0;
-	arrlst->content = malloc(sizeof(void *) * (capacity + 1));
+	arrlst->content = ft_calloc((capacity + 1), sizeof(void *));
 	if (!arrlst->content)
 		arrlst->capacity = 0;
 	return (arrlst);
@@ -31,11 +31,10 @@ static void **grow_array(t_arrlst *list, int old_capacity, int new_capacity)
 {
 	void	**new_array;
 
-	new_array = malloc(sizeof(void *) * (new_capacity + 1));
+	new_array = ft_calloc((new_capacity + 1), sizeof(void *));
 	if (!new_array)
 		return NULL;
 	ft_memcpy(new_array, list->content, (old_capacity * sizeof(void *)));
-	new_array[old_capacity] = NULL;
 	free(list->content);
 	return (new_array);
 }
@@ -53,7 +52,6 @@ void	append_arrlst(t_arrlst *list, void *data)
 			return ;	
 	}
 	list->content[list->count] = data;
-	list->content[list->count + 1] = NULL;
 	list->count++;
 }
 

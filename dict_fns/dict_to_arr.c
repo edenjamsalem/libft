@@ -6,7 +6,7 @@
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 16:46:44 by eamsalem          #+#    #+#             */
-/*   Updated: 2024/12/05 17:07:17 by eamsalem         ###   ########.fr       */
+/*   Updated: 2024/12/06 14:50:41 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char **dict_to_arr(t_dict *dict)
 	int		value_len;
 	int		i;
 
-	arr = malloc(sizeof(char *) * dict_size(dict) + 1);
+	arr = malloc(sizeof(char *) * (dict_size(dict) + 1));
 	if (!arr)
 		return (NULL);
 	i = 0;
@@ -36,5 +36,6 @@ char **dict_to_arr(t_dict *dict)
 		dict = dict->next;
 		i++;
 	}
+	arr[i] = NULL;
 	return (arr);
 }
