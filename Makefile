@@ -6,7 +6,7 @@
 #    By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 10:40:04 by user              #+#    #+#              #
-#    Updated: 2025/01/02 16:17:16 by eamsalem         ###   ########.fr        #
+#    Updated: 2025/02/20 13:31:56 by eamsalem         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ INTARRDIR = ./int_arr_fns
 MEMDIR = ./mem_fns
 PRINTDIR = ./print_fns
 DICTDIR = ./dict_fns
+ATOIDIR = ./atoi_fns
 
 SRCS =	$(STRDIR)/ft_split.c \
 		$(STRDIR)/ft_split_set.c \
@@ -132,15 +133,18 @@ SRCS =	$(STRDIR)/ft_split.c \
 		$(DICTDIR)/del_dict_node.c \
 		$(DICTDIR)/print_dict.c \
 \
-		ft_atoi.c \
-		ft_itoa.c \
+		$(ATOIDIR)/ft_atoi.c \
+		$(ATOIDIR)/ft_atof.c \
+		$(ATOIDIR)/ft_itoa.c \
+		$(ATOIDIR)/ft_atol.c \
+		$(ATOIDIR)/ft_atoi_base.c \
+\
 		ft_swap.c \
 		bubble_sort.c \
 		free_2darr.c \
 		ft_2darr_len.c	\
 		skip_fns.c	\
-		ft_atol.c \
-		ft_atoi_base.c
+		get_next_line.c
 
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 

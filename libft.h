@@ -6,7 +6,7 @@
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:45:22 by eamsalem          #+#    #+#             */
-/*   Updated: 2025/01/06 14:30:01 by eamsalem         ###   ########.fr       */
+/*   Updated: 2025/02/20 13:35:55 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,14 @@
 # include <stdio.h>
 # include <stdarg.h>
 # include <stdint.h>
+# include <limits.h>
 
 # define HEX "0123456789abcdef"
 # define HEX_CAP "0123456789ABCDEF"
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 100
+# endif
 
 int			ft_isalpha(char c);
 
@@ -289,5 +294,9 @@ char		*skip_set(char **text, char *set);
 char		*skip_while(char **text, int (*condition)(char));
 
 char		*skip_len(char **text, int size);
+
+char		*get_next_line(int fd);
+
+double		ft_atof(const char *str);
 
 #endif
