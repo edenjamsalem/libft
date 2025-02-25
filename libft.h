@@ -6,7 +6,7 @@
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 12:45:22 by eamsalem          #+#    #+#             */
-/*   Updated: 2025/02/20 13:35:55 by eamsalem         ###   ########.fr       */
+/*   Updated: 2025/02/21 13:57:37 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -294,8 +294,6 @@ char		*skip_set(char **text, char *set);
 char		*skip_while(char **text, int (*condition)(char));
 
 char		*skip_len(char **text, int size);
-
-char		*get_next_line(int fd);
 
 double		ft_atof(const char *str);
 
