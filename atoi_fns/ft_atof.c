@@ -6,7 +6,7 @@
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:22:29 by eamsalem          #+#    #+#             */
-/*   Updated: 2025/02/20 15:52:29 by eamsalem         ###   ########.fr       */
+/*   Updated: 2025/02/26 19:19:22 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,9 @@ double	ft_atof(const char *str)
 int main(void)
 {
 	char *str = "0.0";
+	char *str1 = "-10.0";
 
 	printf("nbr = %f\n", ft_atof(str));
+	printf("nbr = %f\n", ft_atof(str1));
 }
 */
