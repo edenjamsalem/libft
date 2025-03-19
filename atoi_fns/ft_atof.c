@@ -6,7 +6,7 @@
 /*   By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 12:22:29 by eamsalem          #+#    #+#             */
-/*   Updated: 2025/03/19 16:59:03 by eamsalem         ###   ########.fr       */
+/*   Updated: 2025/03/19 17:10:03 by eamsalem         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	get_int_part(const char *str, int i)
 	}
 	return (nbr_int);
 }
+
 double	ft_atof(const char *str)
 {
 	double	nbr;
