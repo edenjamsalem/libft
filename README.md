@@ -3,7 +3,7 @@
 
 > _The aim of this project is to code a custom C library to be used in all future projects._
 
-For more detailed information, look at the [**subject of this project.**](https://github.com/edenjamsalem/libft/subject.pdf)
+For more detailed information, look at the [**subject of this project.**](https://github.com/edenjamsalem/libft/blob/master/subject.pdf)
 
 ## List of functions from the subject:
 
