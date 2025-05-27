@@ -1,13 +1,13 @@
 
 ## 🗣️ About
 
-> _The aim of this project is to code a custom C library to be used in all your future projects._
+> _The aim of this project is to code a custom C library to be used in all future projects._
 
-For more detailed information, look at the [**subject of this project.**](https://github.com/eamsalem/libft/subject.pdf)
+For more detailed information, look at the [**subject of this project.**](https://github.com/edenjamsalem/libft/subject.pdf)
 
 ## List of functions from the subject:
 
-> _**Many other useful custom functions have been since_
+> _**Many other useful custom functions have been added since_
 
 ### Functions from `<ctype.h>` library
 
@@ -82,8 +82,6 @@ The library is written in C language and needs the **`gcc` compiler** and some s
 **1. Compiling the library**
 
 To compile the library, go to its path and run:
-
-For all mandatory functions:
 
 ```shell
 $ make
