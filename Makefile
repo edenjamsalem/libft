@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eamsalem <eamsalem@student.42.fr>          +#+  +:+       +#+         #
+#    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/26 10:40:04 by user              #+#    #+#              #
-#    Updated: 2025/02/20 13:31:56 by eamsalem         ###   ########.fr        #
+#    Updated: 2025/05/27 06:23:21 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,17 +17,18 @@ CFLAGS = -Wall -Werror -Wextra
 
 OBJDIR =./build
 
-STRDIR = ./str_fns
-CHRDIR = ./chr_fns
-LSTDIR = ./lst_fns
+STRDIR = ./string
+STRSDIR = ./strings
+CTYPE = ./ctype
+LLSTDIR = ./llst
 ARRLSTDIR = ./arrlst_fns
-LST2DIR = ./lst_2fns
+LLST2DIR = ./llst2
 INTLSTDIR = ./int_lst_fns
 INTARRDIR = ./int_arr_fns
-MEMDIR = ./mem_fns
-PRINTDIR = ./print_fns
+PRINTDIR = ./print
 DICTDIR = ./dict_fns
-ATOIDIR = ./atoi_fns
+STDLIB = ./stdlib
+MISC = ./misc
 
 SRCS =	$(STRDIR)/ft_split.c \
 		$(STRDIR)/ft_split_set.c \
@@ -50,33 +51,33 @@ SRCS =	$(STRDIR)/ft_split.c \
 		$(STRDIR)/ft_strcut.c \
 		$(STRDIR)/ft_match.c \
 \
-		$(CHRDIR)/ft_isalnum.c \
-		$(CHRDIR)/ft_isalpha.c \
-		$(CHRDIR)/ft_isascii.c \
-		$(CHRDIR)/ft_isdigit.c \
-		$(CHRDIR)/ft_isspace.c \
-		$(CHRDIR)/ft_isprint.c \
-		$(CHRDIR)/chrsetcmp.c \
-		$(CHRDIR)/ft_issign.c \
-		$(CHRDIR)/ft_tolower.c \
-		$(CHRDIR)/ft_toupper.c \
+		$(CTYPE)/ft_isalnum.c \
+		$(CTYPE)/ft_isalpha.c \
+		$(CTYPE)/ft_isascii.c \
+		$(CTYPE)/ft_isdigit.c \
+		$(CTYPE)/ft_isspace.c \
+		$(CTYPE)/ft_isprint.c \
+		$(CTYPE)/chrsetcmp.c \
+		$(CTYPE)/ft_issign.c \
+		$(CTYPE)/ft_tolower.c \
+		$(CTYPE)/ft_toupper.c \
 \
-		$(LSTDIR)/ft_lstadd_back.c \
-		$(LSTDIR)/ft_lstadd_front.c \
-		$(LSTDIR)/ft_lstclear.c \
-		$(LSTDIR)/ft_lstdelone.c \
-		$(LSTDIR)/ft_lstiter.c \
-		$(LSTDIR)/ft_lstlast.c \
-		$(LSTDIR)/ft_lstmap.c \
-		$(LSTDIR)/ft_lstnew.c \
-		$(LSTDIR)/ft_lstsize.c \
+		$(LLSTDIR)/ft_lstadd_back.c \
+		$(LLSTDIR)/ft_lstadd_front.c \
+		$(LLSTDIR)/ft_lstclear.c \
+		$(LLSTDIR)/ft_lstdelone.c \
+		$(LLSTDIR)/ft_lstiter.c \
+		$(LLSTDIR)/ft_lstlast.c \
+		$(LLSTDIR)/ft_lstmap.c \
+		$(LLSTDIR)/ft_lstnew.c \
+		$(LLSTDIR)/ft_lstsize.c \
 \
-		$(LST2DIR)/ft_lst_2add_back.c \
-		$(LST2DIR)/ft_lst_2last.c \
-		$(LST2DIR)/ft_del_lst_2node.c \
-		$(LST2DIR)/ft_lst_2new.c \
-		$(LST2DIR)/ft_lst_2delone.c \
-		$(LST2DIR)/ft_lst_2clear.c \
+		$(LLST2DIR)/ft_lst_2add_back.c \
+		$(LLST2DIR)/ft_lst_2last.c \
+		$(LLST2DIR)/ft_del_lst_2node.c \
+		$(LLST2DIR)/ft_lst_2new.c \
+		$(LLST2DIR)/ft_lst_2delone.c \
+		$(LLST2DIR)/ft_lst_2clear.c \
 \
 		$(INTLSTDIR)/int_lst_to_arr.c \
 		$(INTLSTDIR)/int_lstnew.c \
@@ -94,13 +95,12 @@ SRCS =	$(STRDIR)/ft_split.c \
 		$(INTARRDIR)/int_arrtrunc.c \
 		$(INTARRDIR)/int_arrlcpy.c \
 \
-		$(MEMDIR)/ft_bzero.c \
-		$(MEMDIR)/ft_calloc.c \
-		$(MEMDIR)/ft_memchr.c \
-		$(MEMDIR)/ft_memcmp.c \
-		$(MEMDIR)/ft_memcpy.c \
-		$(MEMDIR)/ft_memmove.c \
-		$(MEMDIR)/ft_memset.c \
+		$(STRSDIR)/ft_bzero.c \
+		$(STRSDIR)/ft_memchr.c \
+		$(STRSDIR)/ft_memcmp.c \
+		$(STRSDIR)/ft_memcpy.c \
+		$(STRSDIR)/ft_memmove.c \
+		$(STRSDIR)/ft_memset.c \
 \
 		$(PRINTDIR)/ft_putchar_fd.c \
 		$(PRINTDIR)/ft_putendl_fd.c \
@@ -133,18 +133,19 @@ SRCS =	$(STRDIR)/ft_split.c \
 		$(DICTDIR)/del_dict_node.c \
 		$(DICTDIR)/print_dict.c \
 \
-		$(ATOIDIR)/ft_atoi.c \
-		$(ATOIDIR)/ft_atof.c \
-		$(ATOIDIR)/ft_itoa.c \
-		$(ATOIDIR)/ft_atol.c \
-		$(ATOIDIR)/ft_atoi_base.c \
+		$(STDLIB)/ft_calloc.c \
+		$(STDLIB)/ft_atoi.c \
+		$(STDLIB)/ft_atof.c \
+		$(STDLIB)/ft_itoa.c \
+		$(STDLIB)/ft_atol.c \
+		$(STDLIB)/ft_atoi_base.c \
 \
-		ft_swap.c \
-		bubble_sort.c \
-		free_2darr.c \
-		ft_2darr_len.c	\
-		skip_fns.c	\
-		get_next_line.c
+		$(MISC)/ft_swap.c \
+		$(MISC)/bubble_sort.c \
+		$(MISC)/free_2darr.c \
+		$(MISC)/ft_2darr_len.c	\
+		$(MISC)/skip_fns.c	\
+		$(MISC)/get_next_line.c
 
 OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 
